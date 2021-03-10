@@ -1,5 +1,6 @@
 package com.example.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -12,13 +13,13 @@ public class EmployeeModel {
         return instance;
     }
 
-    private List<Employee> employeeList;
+    private final List<Employee> employeeList;
 
     private EmployeeModel() {
         this.employeeList = new ArrayList<>();
-        this.employeeList.add(new Employee( String.valueOf(this.employeeList.size()), "name"));
-        this.employeeList.add(new Employee( String.valueOf(this.employeeList.size()), "name2"));
-        this.employeeList.add(new Employee( String.valueOf(this.employeeList.size()), "name3"));
+        this.employeeList.add(new Employee(String.valueOf(this.employeeList.size()), "name", LocalDate.now()));
+        this.employeeList.add(new Employee(String.valueOf(this.employeeList.size()), "name2", LocalDate.now()));
+        this.employeeList.add(new Employee(String.valueOf(this.employeeList.size()), "name3", LocalDate.now()));
 
     }
 
@@ -31,7 +32,7 @@ public class EmployeeModel {
     }
 
     public List<String> list() {
-        return employeeList.stream().map(user -> user.getName()).collect(Collectors.toList());
+        return employeeList.stream().map(Employee::getName).collect(Collectors.toList());
     }
 
     public Employee deleteEmployee(String id) {
