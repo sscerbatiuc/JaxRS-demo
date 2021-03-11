@@ -1,6 +1,8 @@
 package com.example.model;
 
+import com.example.model.serializer.EmployeeDeserializer;
 import com.example.model.serializer.EmployeeSerializer;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,6 +10,7 @@ import java.time.LocalDate;
 
 @XmlRootElement
 @JsonSerialize(using = EmployeeSerializer.class)
+@JsonDeserialize(using = EmployeeDeserializer.class)
 public class Employee {
     private String id;
     private String name;
